@@ -100,15 +100,6 @@ export default function UploadPage() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + sizes[i];
   };
 
-  // Function to handle email click - Opens Gmail compose window
-  const handleEmailClick = () => {
-    const email = "pullaythrisha@gmail.com";
-    const subject = "Script2Doc Query";
-    const body = "Hello,\n\nI would like to inquire about...";
-    
-    // This opens the user's default email client with pre-filled details
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
 
   return (
     <>
@@ -256,22 +247,7 @@ export default function UploadPage() {
       </div>
 
       {/* Compact Footer Section */}
-      <footer className="main-footer">
-        <div className="footer-content">
-          <div className="footer-left">
-            <div className="footer-links">
-              <span className="footer-link email-link" onClick={handleEmailClick}>
-                Contact: pullaythrisha@gmail.com
-              </span>
-            </div>
-          </div>
-          <div className="footer-right">
-            <p className="copyright">
-              © {new Date().getFullYear()} Script2Doc. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      
     </>
   );
 }

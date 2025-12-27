@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import UploadPage from "./pages/UploadPage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./index.css";
 
 export default function App() {
@@ -49,7 +50,10 @@ export default function App() {
   return (
     <div className="app-container">
       <Header onLogout={logout} userName={userName} />
-      <UploadPage />
+      <main className="app-main">
+        <UploadPage />
+      </main>
+      <Footer />
     </div>
   );
 }

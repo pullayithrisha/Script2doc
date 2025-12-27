@@ -29,12 +29,16 @@ export default function SignupPage({ goLogin }) {
       // Enhanced error handling
       if (e.response) {
         // Server responded with error status
-        if (e.response.status === 409 || 
-            e.response.data?.message?.toLowerCase().includes("already") ||
-            e.response.data?.message?.toLowerCase().includes("exists") ||
-            e.response.data?.message?.toLowerCase().includes("registered")) {
-          setError("Email already registered. Please use a different email or login.");
-        } else if (e.response.data?.message) {
+        if (e.response) {
+  const msg = e.response.data?.msg || "";
+
+  if (msg.toLowerCase().includes("already")) {
+    setError("Email already registered. Please login.");
+  } else {
+    setError(msg || "Signup failed. Please try again.");
+  }
+}
+ else if (e.response.data?.message) {
           // Show the actual error message from backend
           setError(e.response.data.message);
         } else {

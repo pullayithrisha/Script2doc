@@ -26,25 +26,19 @@ export default function LoginPage({ setToken, goSignup, onLogin }) {
       
     } catch (e) {
       // Enhanced error handling
-      if (e.response) {
-        // Server responded with error status
-        if (e.response.status === 404 || e.response.data?.message?.toLowerCase().includes("not found")) {
-          setError("Email not found. Please sign up.");
-        } else if (e.response.status === 401 || e.response.data?.message?.toLowerCase().includes("invalid") || 
-                  e.response.data?.message?.toLowerCase().includes("password")) {
-          setError("Invalid password. Please try again.");
-        } else if (e.response.data?.message) {
-          setError(e.response.data.message);
-        } else {
-          setError("Login failed. Please try again.");
-        }
-      } else if (e.request) {
-        // Request made but no response
-        setError("Unable to connect to server. Please check your connection.");
-      } else {
-        // Other errors
-        setError("An error occurred. Please try again.");
-      }
+     if (e.response) {
+  const msg = e.response.data?.msg || "";
+
+  if (msg.toLowerCase().includes("invalid")) {
+    setError("Invalid email or password.");
+  } else if (msg.toLowerCase().includes("not found")) {
+    setError("Email not found. Please sign up.");
+  } else {
+    setError(msg || "Login failed. Please try again.");
+  }
+}
+
+
     }
     
     setIsLoading(false);
