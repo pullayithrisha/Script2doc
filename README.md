@@ -112,3 +112,32 @@ Add user history and file storage
 Add drag-and-drop upload
 
 Improve UI/UX design
+
+---
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repository
+
+Create a new branch (feature/your-feature)
+
+Commit your changes
+
+Push to your fork
+
+Create a Pull Request
+
+---
+
+👩‍💻 Author
+
+P. Thrisha
+B.Tech CSE Student
+GitHub: pullayithrisha
+
+---
+
+📜 License
+
+This project is licensed under the MIT License — feel free to use and modify it.
