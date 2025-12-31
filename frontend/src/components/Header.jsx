@@ -45,13 +45,9 @@ export default function Header({ onLogout, userName }) {
             </div>
           )}
           
+          {/* FIXED: Always show "Logout" text, not conditional */}
           <button className="logout-btn" onClick={onLogout}>
-            <svg className="logout-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 17L21 12L16 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M9 21H7C5.89543 21 5 20.1046 5 19V5C5 3.89543 5.89543 3 7 3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            {!isMobile && 'Logout'}
+            <span>Logout</span>
           </button>
         </div>
       </div>

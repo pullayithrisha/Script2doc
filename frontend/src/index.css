@@ -27,7 +27,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: var(--primary-bg);
   color: var(--text-primary);
   line-height: 1.6;
@@ -37,6 +37,8 @@ body {
 
 .app-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--primary-bg);
   animation: fadeIn 0.8s ease-out;
 }
@@ -163,28 +165,146 @@ body {
   white-space: nowrap;
 }
 
+/* ===== LOGOUT BUTTON ===== */
 .logout-btn {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--error-color);
-  padding: 0.625rem 1.25rem;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
+  background: rgba(239, 68, 68, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.6);
+  color: #ffffff;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
   transition: var(--transition);
+  white-space: nowrap;
+  height: 34px;
+  min-width: 70px;
+}
+
+/* Remove all icons from logout button */
+.logout-btn svg,
+.logout-btn .logout-icon {
+  display: none;
 }
 
 .logout-btn:hover {
-  background: rgba(239, 68, 68, 0.25);
-  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.35);
+  border-color: rgba(239, 68, 68, 0.8);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.3);
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .logout-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+    height: 32px;
+    min-width: 65px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .logout-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.65rem;
+    height: 30px;
+    min-width: 60px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .logout-btn {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.6rem !important;
+    height: 28px;
+    max-width: 70px;
+    min-width: 60px !important;
+  }
+  
+  .logout-btn span {
+    letter-spacing: 0;
+  }
+}
+
+/* Header layout adjustments for mobile */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .header-right {
+    gap: 0.5rem;
+  }
+  
+  .user-info {
+    gap: 0.4rem;
+  }
+  
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+  
+  .user-name {
+    font-size: 0.7rem;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Extra small header adjustments */
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 0.75rem;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .logo-dot {
+    font-size: 1.5rem;
+  }
+  
+  .user-name {
+    display: none; /* Hide username on very small screens */
+  }
+  
+  .header-right {
+    gap: 0.4rem;
+  }
+}
+
+/* Fix for 412px width screens specifically */
+@media (max-width: 420px) {
+  .header-container {
+    padding: 0 0.5rem;
+  }
+  
+  .logo-section {
+    gap: 0.4rem;
+  }
+  
+  .logo-text {
+    font-size: 1rem;
+  }
+  
+  .logout-btn {
+    padding: 0.3rem 0.55rem !important;
+    font-size: 0.6rem !important;
+    min-width: 58px !important;
+    max-width: 65px;
+    height: 28px;
+  }
+}
 /* ===== AUTH PAGES ===== */
 .auth-page {
   min-height: 100vh;
@@ -222,7 +342,7 @@ body {
 }
 
 .auth-header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2..logout-btn5rem;
   text-align: center;
 }
 
@@ -450,18 +570,20 @@ body {
 /* ===== DASHBOARD ===== */
 .dashboard {
   padding-top: 80px;
-  min-height: 100vh;
+  min-height: calc(100vh - 64px);
   display: flex;
   align-items: center;
-  padding-bottom: 3rem;
+  padding-bottom: 0;
   animation: fadeIn 0.8s ease-out;
+  flex: 1;
 }
 
 .dashboard-container {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem;
+  flex: 1;
 }
 
 .dashboard-header {
@@ -848,7 +970,7 @@ body {
 .extracted-text {
   padding: 1.5rem;
   margin: 0;
-  font-family: 'JetBrains Mono', 'Menlo', 'Monaco', 'Cascadia Code', monospace;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.8;
   color: var(--text-primary);
@@ -876,77 +998,6 @@ body {
 
 .extracted-text::-webkit-scrollbar-thumb:hover {
   background: #00c1eb;
-}
-
-/* ===== FEATURES GRID - Removed container look ===== */
-.compact-features {
-  background: transparent;
-  border-radius: 0;
-  padding: 1rem 0;
-  border: none;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: none;
-  animation: slideUp 0.6s ease-out 0.7s both;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-}
-
-.feature-item {
-  text-align: center;
-  padding: 0.75rem;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: auto;
-  height: auto;
-  transition: var(--transition);
-  border: none;
-  background: transparent;
-}
-
-.feature-item:hover {
-  background: rgba(0, 212, 255, 0.05);
-  border-color: transparent;
-  transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.feature-item .feature-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 212, 255, 0.1);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  transition: var(--transition);
-}
-
-.feature-item:hover .feature-icon {
-  background: rgba(0, 212, 255, 0.2);
-  transform: scale(1.05);
-}
-
-.feature-item h4 {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
-}
-
-.feature-item p {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  opacity: 0.8;
 }
 
 /* ===== LOADER ===== */
@@ -1037,6 +1088,12 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+
+.limits-text {
+  font-size: 0.85rem;
+  color: #bbd4ee;
+  font-weight: 500;
+}
 /* ===== LAPTOP/DESKTOP SPECIFIC STYLES ===== */
 @media (min-width: 769px) {
   /* Make upload section even more compact on laptops */
@@ -1060,34 +1117,6 @@ body {
     width: 18px;
     height: 18px;
   }
-  
-  /* Features grid adjustments for laptop */
-  .compact-features {
-    padding: 0.75rem 0;
-  }
-  
-  .feature-grid {
-    gap: 0.5rem;
-  }
-  
-  .feature-item {
-    padding: 0.5rem;
-  }
-  
-  .feature-item .feature-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.125rem;
-    margin-bottom: 0.375rem;
-  }
-  
-  .feature-item h4 {
-    font-size: 0.8125rem;
-  }
-  
-  .feature-item p {
-    font-size: 0.6875rem;
-  }
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -1105,14 +1134,6 @@ body {
   
   .compact-results-section {
     padding: 1.5rem;
-  }
-  
-  .compact-features {
-    padding: 0.75rem 0;
-  }
-  
-  .feature-grid {
-    gap: 0.5rem;
   }
 }
 
@@ -1144,30 +1165,24 @@ body {
     font-size: 0.75rem;
   }
   
-  .logout-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
+  .header-right {
+    gap: 0.75rem;
   }
   
-  .auth-card {
-    padding: 2rem;
-  }
-  
-  .auth-title {
-    font-size: 1.75rem;
-  }
+  /* Mobile logout button - FIXED: No duplicate styles here */
   
   /* Mobile Dashboard */
   .dashboard {
     padding-top: 80px;
     align-items: flex-start;
-    padding-bottom: 2rem;
-    min-height: auto;
-    height: auto;
+    padding-bottom: 0;
+    min-height: calc(100vh - 64px);
   }
   
   .dashboard-container {
-    padding: 0 1.25rem;
+    padding: 0 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
     max-width: 100%;
   }
   
@@ -1190,28 +1205,31 @@ body {
     margin-bottom: 1.25rem;
   }
   
+  /* Upload area mobile improvements */
   .upload-area {
-    padding: 1.5rem 1.25rem;
-    min-height: 140px;
+    padding: 1.75rem 1.5rem;
+    min-height: 160px;
   }
   
   .upload-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1rem;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.25rem;
   }
   
   .upload-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
   
   .upload-text h3 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
   }
   
   .upload-text p {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
   
   .compact-files-preview {
@@ -1254,31 +1272,6 @@ body {
     height: 40px;
   }
   
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-  
-  .feature-item {
-    min-height: auto;
-    padding: 1rem 0.5rem;
-  }
-  
-  .feature-item .feature-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .feature-item h4 {
-    font-size: 0.8125rem;
-  }
-  
-  .feature-item p {
-    font-size: 0.75rem;
-  }
-  
   .extracted-text {
     font-size: 0.8125rem;
     padding: 1.25rem;
@@ -1319,20 +1312,20 @@ body {
     padding: 1rem;
   }
   
+  /* Small mobile upload area adjustments */
   .upload-area {
-    padding: 1.25rem 1rem;
-    min-height: 120px;
+    padding: 1.5rem 1.25rem;
+    min-height: 150px;
   }
   
   .upload-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 0.75rem;
+    width: 52px;
+    height: 52px;
   }
   
   .upload-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
   
   .upload-text h3 {
@@ -1342,6 +1335,8 @@ body {
   .upload-text p {
     font-size: 0.8125rem;
   }
+  
+  /* REMOVED DUPLICATE LOGOUT BUTTON STYLES HERE */
   
   .compact-files-preview {
     max-height: 160px;
@@ -1366,33 +1361,6 @@ body {
     font-size: 0.6875rem;
   }
   
-  .compact-features {
-    padding: 0.5rem 0;
-  }
-  
-  .feature-grid {
-    gap: 0.5rem;
-  }
-  
-  .feature-item {
-    padding: 0.75rem 0.25rem;
-  }
-  
-  .feature-item .feature-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.125rem;
-    margin-bottom: 0.375rem;
-  }
-  
-  .feature-item h4 {
-    font-size: 0.75rem;
-  }
-  
-  .feature-item p {
-    font-size: 0.6875rem;
-  }
-  
   .extracted-text {
     font-size: 0.75rem;
     padding: 1rem;
@@ -1414,30 +1382,15 @@ body {
     padding: 0.625rem 1rem;
     font-size: 0.8125rem;
   }
-  
-  .feature-grid {
-    gap: 0.25rem;
-  }
-  
-  .feature-item {
-    padding: 0.5rem 0.25rem;
-  }
-  
-  .feature-item .feature-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
 }
 
-/*footer*/
-/* Compact Footer Styles */
+/* ===== FOOTER ===== */
 .main-footer {
   width: 100%;
   background: var(--card-bg);
   border-top: 1px solid var(--border-color);
-  margin-top: auto;
   padding: 0.75rem 0;
+  margin-top: auto;
 }
 
 .footer-content {
@@ -1485,11 +1438,11 @@ body {
 }
 
 .footer-link:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .email-link {
-  color: var(--primary-color);
+  color: var(--accent-color);
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -1507,8 +1460,24 @@ body {
 
 .copyright {
   font-size: 0.8rem;
-  color: var(--text-tertiary);
+  color: var(--text-muted);
   margin: 0;
   opacity: 0.8;
   white-space: nowrap;
+}
+
+/* Mobile footer adjustments */
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 0.5rem 0;
+  }
+  
+  .footer-content {
+    padding: 0 1rem;
+    text-align: center;
+  }
+  
+  .footer-links {
+    margin: 0.25rem 0;
+  }
 }

@@ -142,6 +142,12 @@ export default function UploadPage() {
               <div className="upload-text">
                 <h3>Drop files or click to browse</h3>
                 <p>Images (JPG, PNG) & PDF files only</p>
+                {/* Added the text you requested here */}
+                <div className="file-limits-info">
+                  <span className="limits-text">
+                    Supports single images, multiple images (up to 5), and PDFs (3-5 pages)
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -216,37 +222,9 @@ export default function UploadPage() {
             </div>
           )}
 
-          <div className="compact-features">
-            <div className="feature-grid">
-              <div className="feature-item">
-                <div className="feature-icon">📷</div>
-                <h4>Images</h4>
-                <p>JPG, PNG</p>
-              </div>
-              
-              <div className="feature-item">
-                <div className="feature-icon">📄</div>
-                <h4>PDF</h4>
-                <p>Documents</p>
-              </div>
-              
-              <div className="feature-item">
-                <div className="feature-icon">✍️</div>
-                <h4>Handwritten</h4>
-                <p>Text extraction</p>
-              </div>
-              
-              <div className="feature-item">
-                <div className="feature-icon">📝</div>
-                <h4>Word</h4>
-                <p>DOC format</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Compact Footer Section */}
       
     </>
   );
